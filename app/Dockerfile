@@ -27,6 +27,7 @@ ENV PORT=3000
 
 COPY --from=builder /app .
 
+RUN apk update && apk add curl 
 # Create non-root user
 RUN addgroup -S appgroup && \
     adduser -S appuser -G appgroup

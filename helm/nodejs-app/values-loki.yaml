@@ -1,0 +1,26 @@
+loki:
+  schemaConfig:
+    configs:
+      - from: "2024-04-01" # Use a date in the past
+        store: tsdb
+        object_store: s3
+        schema: v13
+        index:
+          prefix: index_
+          period: 24h
+  storage:
+    type: s3
+    bucketNames:
+      chunks: loki-s3-590183758430-ap-south-1-an
+      ruler: loki-s3-590183758430-ap-south-1-an
+      admin: loki-s3-590183758430-ap-south-1-an
+    s3:
+      region: ap-south-1
+
+serviceAccount:
+  create: true
+  name: loki-sa
+  annotations:
+    #eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<YOUR_IAM_ROLE_NAME>
+    #eks.amazonaws.com/role-arn: arn:aws:s3:::loki-s3-590183758430-ap-south-1-an
+    eks.amazonaws.com/role-arn: arn:aws:iam::590183758430:role/loki-s3-role

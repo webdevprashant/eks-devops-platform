@@ -35,12 +35,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nodejs-app
+  labels:
+    app: nodejs-app
 spec:
   type: ClusterIP
   selector:
     app: nodejs-app
   ports:
-  - port: 80
+  - name: http
+    port: 80
     targetPort: 3000
 ---
 apiVersion: networking.k8s.io/v1

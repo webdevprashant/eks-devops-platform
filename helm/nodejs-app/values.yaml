@@ -1,8 +1,8 @@
 replicaCount: 2
 
 image:
-  repository: <AWS_ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/nodejs-app
-  tag: latest
+  repository: 590183758430.dkr.ecr.ap-south-1.amazonaws.com/nodejs_app
+  tag: v1
   pullPolicy: IfNotPresent
 
 serviceAccount:
@@ -56,3 +56,13 @@ livenessProbe:
 
 readinessProbe:
   path: /ready
+
+
+serviceMonitor:
+  enabled: true
+  interval: 30s
+
+  path: /metrics
+
+  labels:
+    release: monitoring

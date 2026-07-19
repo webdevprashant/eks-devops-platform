@@ -4,6 +4,7 @@ npm-debug.log
 
 # Terraform
 .terraform/
+.terraform
 *.tfstate
 *.tfstate.*
 terraform.tfvars

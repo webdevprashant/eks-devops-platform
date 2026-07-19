@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "express": "^5.2.1",
     "helmet": "^8.3.0",
+    "jest": "^30.4.2",
     "morgan": "^1.11.0",
     "nodemon": "^3.1.14",
     "prom-client": "^15.1.3"

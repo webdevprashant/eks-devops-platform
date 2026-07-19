@@ -30,7 +30,7 @@ jobs:
         working-directory: app
 
       - name: Run Tests
-        run: npm test
+        run: npm run test
         working-directory: app
 
       - name: Configure AWS Credentials

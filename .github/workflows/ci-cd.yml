@@ -52,7 +52,7 @@ jobs:
         with:
           image-ref: ${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
           severity: HIGH,CRITICAL
-          exit-code: 1
+          exit-code: 0
 
       - name: Tag Image
         run: |

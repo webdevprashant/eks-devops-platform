@@ -8,7 +8,8 @@ resource "aws_iam_openid_connect_provider" "github" {
     "sts.amazonaws.com"
   ]
   thumbprint_list = [
-    "6938fd4d98bab03faadb97b34396831e3780aea1"
+    #"6938fd4d98bab03faadb97b34396831e3780aea1"
+     "06b25927c42a721631c1efd9431e648fa62e1e39"
   ]
   tags = {
     Name        = "GitHub-OIDC"

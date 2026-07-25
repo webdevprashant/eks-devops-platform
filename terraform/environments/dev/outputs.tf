@@ -1,6 +1,6 @@
 output "vpc_id" {
   description = "VPC ID"
-  value       = "../modules.network.aws_vpc.main.id"
+  value       = module.network.vpc_id
 }
 
 output "internet_gateway_id" {
@@ -26,33 +26,39 @@ output "private_subnet_2" {
 
 output "ecr_repository_url" {
   description = "Amazon ECR Repository URL"
-  value       = aws_ecr_repository.nodejs-app.repository_url
+  value       = module.ecr.repository_url
 }
 
 output "eks_cluster_role_arn" {
-  value = aws_iam_role.eks_cluster_role.arn
+  value = module.iam_eks.cluster_role_arn
 }
 
 output "eks_node_role_arn" {
-  value = "../modules.eks.aws_iam_role.eks_node_role.arn"
+  value = module.iam_eks.node_role_arn
 }
 
 output "cluster_name" {
-  value = aws_eks_cluster.main.name
+  value = module.eks.cluster_name
 }
 
 output "cluster_endpoint" {
-  value = aws_eks_cluster.main.endpoint
+  value = module.eks.cluster_endpoint
+}
+
+output "oidc_issuer" {
+  value = module.eks.oidc_issuer
 }
 
 output "node_group_name" {
-  value = aws_eks_node_group.main.node_group_name
+  value = module.eks.node_group_name
 }
 
+/*
 output "alb_controller_role_arn" {
   value = aws_iam_role.alb_controller.arn
 }
+*/
 
 output "github_role_arn" {
-  value = aws_iam_role.github_actions.arn
+  value = module.iam_github.github_role_arn
 }

@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: 590183758430.dkr.ecr.ap-south-1.amazonaws.com/nodejs_app
+  repository: 590183758430.dkr.ecr.ap-south-1.amazonaws.com/eks-devops-platform-dev-nodejs
   tag: v1
   pullPolicy: IfNotPresent
 
@@ -59,7 +59,7 @@ readinessProbe:
 
 
 serviceMonitor:
-  enabled: true
+  enabled: false
   interval: 30s
 
   path: /metrics

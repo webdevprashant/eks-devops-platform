@@ -33,6 +33,13 @@ jobs:
         run: npm run test
         working-directory: app
       
+      - name: Print Role ARN
+        run: |
+          echo "${{ secrets.AWS_ROLE_ARN }}"
+          echo "${{ secrets.AWS_REGION }}"
+          echo "${{ secrets.ECR_REPOSITORY }}"
+          echo "${{ secrets.EKS_CLUSTER_NAME }}"
+      
       - name: Check OIDC Environment
         run: |
           echo "ACTIONS_ID_TOKEN_REQUEST_URL=$ACTIONS_ID_TOKEN_REQUEST_URL"

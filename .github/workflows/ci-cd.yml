@@ -33,6 +33,11 @@ jobs:
         run: npm run test
         working-directory: app
       
+      - name: Check OIDC Environment
+        run: |
+          echo "ACTIONS_ID_TOKEN_REQUEST_URL=$ACTIONS_ID_TOKEN_REQUEST_URL"
+          echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN is set? $([[ -n "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" ]] && echo yes || echo no)"
+      
       - name: Debug GitHub Context
         run: |
           echo "Repository = ${{ github.repository }}"

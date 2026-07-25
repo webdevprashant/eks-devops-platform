@@ -40,6 +40,17 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
 
+      - name: Verify AWS Identity
+        run: aws sts get-caller-identity
+
+      - name: Verify Kubernetes Access
+        run: |
+          aws eks update-kubeconfig \
+            --region ${{ secrets.AWS_REGION }} \
+            --name ${{ vars.EKS_CLUSTER_NAME }}
+
+    kubectl auth can-i get pods --all-namespaces
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2

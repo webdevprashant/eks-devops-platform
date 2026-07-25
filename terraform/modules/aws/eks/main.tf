@@ -16,7 +16,9 @@ resource "aws_eks_cluster" "main" {
     endpoint_public_access  = true
   }
   tags = {
-    Name      = "eks-devops-cluster"
+    Name      = local.cluster_name
+    Project = var.project_name
+    Environment = var.environment
     ManagedBy = "Terraform"
   }
 }

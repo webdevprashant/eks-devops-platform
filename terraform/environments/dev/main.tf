@@ -49,3 +49,21 @@ module "iam_github" {
   cluster_arn       = module.eks.cluster_arn
   repository_arn    = module.ecr.repository_arn
 }
+
+module "alb_controller" {
+  source       = "../../modules/addons/aws-load-balancer-controller"
+  project_name = var.project_name
+  environment  = var.environment
+  cluster_name = module.eks.cluster_name
+  # cluster_oidc_issuer = module.eks.oidc_issuer
+  region            = var.region
+  vpc_id            = module.network.vpc_id
+  oidc_provider_arn = module.oidc.oidc_provider_arn
+  oidc_provider_url = module.oidc.oidc_provider_url
+}
+
+module "oidc" {
+  source              = "../../modules/aws/iam/oidc"
+  cluster_oidc_issuer = module.eks.oidc_issuer
+  # oidc_provider_arn   = module.oidc.oidc_provider_arn
+}

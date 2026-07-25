@@ -48,8 +48,7 @@ jobs:
           aws eks update-kubeconfig \
             --region ${{ secrets.AWS_REGION }} \
             --name ${{ vars.EKS_CLUSTER_NAME }}
-
-    kubectl auth can-i get pods --all-namespaces
+          kubectl auth can-i get pods --all-namespaces
 
       - name: Login to Amazon ECR
         id: login-ecr
